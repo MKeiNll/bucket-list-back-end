@@ -1,20 +1,35 @@
 package com.bucketlist.controller;
 
 import com.bucketlist.model.Entry;
+import com.bucketlist.service.EntryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:9000")
 public class EntryController {
 
-    /**
-     * GET /realestate : Lists all real estate objects.
-     *
-     * @return body with all real estate objects.
-     */
-    @CrossOrigin(origins = "http://localhost:9000")
+    @Autowired
+    EntryService entryService;
+
     @RequestMapping(method = RequestMethod.GET)
-    @ResponseBody
-    public Entry getTestEntry() {
-        return new Entry("hello, ", "react");
+    public List<Entry> getAllEntries() {
+        return entryService.getAllEntries();
+    }
+
+    @RequestMapping(method = RequestMethod.PUT)
+    public Entry createEntry(@RequestParam(value = "title", required = true) String title,
+                             @RequestParam(value = "content", required = true) String content) {
+        return entryService.createEntry(title, content);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void deleteEntry(@RequestParam(value = "id", required = true) Long id) {
+        entryService.deleteEntry(id);
     }
 }
