@@ -2,21 +2,25 @@ INSERT INTO
   entry (
     id,
     title,
-    content
+    content,
+    selected
   )
 VALUES
   (
     DEFAULT,
     'Finish this project',
-    'awesome'
+    'awesome',
+    false
   ),
   (
     DEFAULT,
     'Make beautiful UI',
-    'like really beautiful'
+    'like really beautiful',
+    false
   ),
   (
     DEFAULT,
     'Go for a smoke',
-    'a nice one'
+    'a nice one',
+    false
   );

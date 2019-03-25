@@ -23,4 +23,6 @@ public class Entry {
     private String title;
     @NonNull
     private String content;
+    @NonNull
+    private Boolean selected;
 }

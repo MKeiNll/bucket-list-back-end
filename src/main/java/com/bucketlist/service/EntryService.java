@@ -20,8 +20,12 @@ public class EntryService {
         return entryList;
     }
 
-    public Entry createEntry(String title, String content) {
-        return entryRepository.save(new Entry(title, content));
+    public Entry createEntry(String title, String content, Boolean selected) {
+        return entryRepository.save(new Entry(title, content, selected));
+    }
+
+    public Entry editEntry(Entry entry) {
+        return entryRepository.save(entry);
     }
 
     public void deleteEntry(Long id) {

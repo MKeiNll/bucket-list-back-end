@@ -22,4 +22,5 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	compile group: 'org.everit.json', name: 'org.everit.json.schema', version: '1.0.0'
 }
