@@ -17,7 +17,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = "http://localhost:9000")
 public class EntryController {
 
     @Autowired
@@ -48,7 +47,6 @@ public class EntryController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         Schema schema = SchemaLoader.load(jsonSchema);
         schema.validate(new JSONObject(entry));
 
