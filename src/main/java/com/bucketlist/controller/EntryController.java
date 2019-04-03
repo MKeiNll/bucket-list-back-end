@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/ester")
 public class EntryController {
 
     @Autowired
@@ -60,7 +60,7 @@ public class EntryController {
         entryService.deleteEntry(id);
     }
 
-    @RequestMapping(value = "/data", method = RequestMethod.GET)
+    @RequestMapping(value = "/data/getImageByIsbn", method = RequestMethod.GET)
     public Map<String, String> getBook(@RequestParam(value = "isbnCode", required = true) String isbnCode) {
         Map<String, String> sampleBook = new HashMap<>();
         sampleBook.put("isbnCode", isbnCode);
