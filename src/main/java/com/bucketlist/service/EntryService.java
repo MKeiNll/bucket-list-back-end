@@ -20,6 +20,10 @@ public class EntryService {
         return entryList;
     }
 
+    public Entry findById(Long id) {
+        return entryRepository.findById(id).get();
+    }
+
     public Entry createEntry(String title, String content, Boolean selected) {
         return entryRepository.save(new Entry(title, content, selected));
     }

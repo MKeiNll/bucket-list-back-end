@@ -37,6 +37,13 @@ public class EntryController {
         return entryService.createEntry(title, content, false);
     }
 
+    @RequestMapping(value = "/select", method = RequestMethod.POST)
+    public Entry selectEntry(@RequestParam(value = "id", required = true) Long id) {
+        Entry entryToSelect = entryService.findById(id);
+        entryToSelect.setSelected(!entryToSelect.getSelected());
+        return entryService.editEntry(entryToSelect);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public Entry editEntry(@RequestBody(required = true) Entry entry) {
         JSONObject jsonSchema = null;
