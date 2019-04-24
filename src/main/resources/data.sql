@@ -3,24 +3,28 @@ INSERT INTO
     id,
     title,
     content,
-    selected
+    selected,
+    index
   )
 VALUES
   (
     DEFAULT,
     'Finish this project',
     'awesome',
-    false
+    false,
+    2
   ),
   (
     DEFAULT,
     'Make beautiful UI',
     'like really beautiful',
-    false
+    false,
+    1
   ),
   (
     DEFAULT,
     'Go for a smoke',
     'a nice one',
-    false
+    false,
+    0
   );

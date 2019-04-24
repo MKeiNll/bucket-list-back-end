@@ -25,4 +25,6 @@ public class Entry {
     private String content;
     @NonNull
     private Boolean selected;
+    @NonNull
+    private Long index;
 }

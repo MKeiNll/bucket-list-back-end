@@ -25,7 +25,14 @@ public class EntryService {
     }
 
     public Entry createEntry(String title, String content, Boolean selected) {
-        return entryRepository.save(new Entry(title, content, selected));
+        Long highestIngex = entryRepository.findFirstByOrderByIndexDesc().getIndex();
+        return entryRepository.save(new Entry(title, content, selected, highestIngex + 1));
+    }
+
+    public List<Entry> moveEntries() {
+        List<Entry> entryList = new ArrayList<Entry>();
+        entryRepository.findAll().forEach(entryList::add);
+        return entryList; /// move??????
     }
 
     public Entry editEntry(Entry entry) {
