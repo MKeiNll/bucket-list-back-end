@@ -2,6 +2,7 @@ package com.bucketlist.service;
 
 import com.bucketlist.dao.EntryRepository;
 import com.bucketlist.model.Entry;
+import com.bucketlist.util.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,9 @@ public class EntryService {
 
     @Autowired
     EntryRepository entryRepository;
+
+    @Autowired
+    private ListUtils listUtils;
 
     public List<Entry> getAllEntries() {
         List<Entry> entryList = new ArrayList<Entry>();
@@ -29,10 +33,10 @@ public class EntryService {
         return entryRepository.save(new Entry(title, content, selected, highestIngex + 1));
     }
 
-    public List<Entry> moveEntries() {
+    public List<Entry> moveEntry(Long from, Long to) {
         List<Entry> entryList = new ArrayList<Entry>();
-        entryRepository.findAll().forEach(entryList::add);
-        return entryList; /// move??????
+        entryRepository.saveAll(listUtils.moveEntry(getAllEntries(), from, to)).forEach(entryList::add);
+        return entryList;
     }
 
     public Entry editEntry(Entry entry) {

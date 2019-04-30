@@ -18,9 +18,11 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+//	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	compile group: 'io.fusionauth', name: 'fusionauth-spring-security', version: '1.0.3'
 //	compile group: 'org.everit.json', name: 'org.everit.json.schema', version: '1.0.0'
 }
