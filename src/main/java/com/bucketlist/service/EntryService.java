@@ -29,8 +29,8 @@ public class EntryService {
     }
 
     public Entry createEntry(String title, String content, Boolean selected) {
-        Long highestIngex = entryRepository.findFirstByOrderByIndexDesc().getIndex();
-        return entryRepository.save(new Entry(title, content, selected, highestIngex + 1));
+        Long highestIndex = entryRepository.findFirstByOrderByIndexDesc().getIndex();
+        return entryRepository.save(new Entry(title, content, selected, highestIndex + 1));
     }
 
     public List<Entry> moveEntry(Long from, Long to) {
