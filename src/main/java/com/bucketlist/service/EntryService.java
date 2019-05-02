@@ -43,7 +43,11 @@ public class EntryService {
         return entryRepository.save(entry);
     }
 
-    public void deleteEntry(Long id) {
+    public List<Entry> deleteEntry(Long id) {
+        Long nonExistentIndex = findById(id).getIndex();
+        List<Entry> entryList = new ArrayList<Entry>();
         entryRepository.deleteById(id);
+        entryRepository.saveAll(listUtils.handleDeletion(getAllEntries(), nonExistentIndex)).forEach(entryList::add);
+        return entryList;
     }
 }

@@ -24,14 +24,25 @@ public class ListUtils {
         }
 
         for (Entry entry : entries) {
-            if (entry.getIndex() == from) {
+            Long entryIndex = entry.getIndex();
+            if (entryIndex == from) {
                 entry.setIndex(to);
-            } else if (indicesToAffect.contains(entry.getIndex())) {
+            } else if (indicesToAffect.contains(entryIndex)) {
                 if (!up) {
-                    entry.setIndex(entry.getIndex() - 1);
+                    entry.setIndex(entryIndex - 1);
                 } else if (up) {
-                    entry.setIndex(entry.getIndex() + 1);
+                    entry.setIndex(entryIndex + 1);
                 }
+            }
+        }
+        return entries;
+    }
+
+    public List<Entry> handleDeletion(List<Entry> entries, Long nonExistentIndex) {
+        for (Entry entry : entries) {
+            Long entryIndex = entry.getIndex();
+            if (entryIndex > nonExistentIndex) {
+                entry.setIndex(entryIndex - 1);
             }
         }
         return entries;

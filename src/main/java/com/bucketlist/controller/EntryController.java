@@ -56,7 +56,7 @@ public class EntryController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(value = HttpStatus.OK)
-    public void deleteEntry(@PathVariable Long id) {
-        entryService.deleteEntry(id);
+    public List<Entry> deleteEntry(@PathVariable Long id) {
+        return entryService.deleteEntry(id);
     }
 }
